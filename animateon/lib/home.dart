@@ -1,4 +1,3 @@
-import 'package:animateon/camera.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -14,10 +13,12 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
+        elevation: 0,
         title: Text(
           'Animate On',
           style: TextStyle(
             fontSize: 25,
+            fontFamily: ' LilitaOne',
           ),
         ),
         centerTitle: true,
@@ -31,11 +32,19 @@ class _HomeState extends State<Home> {
             ),
             Text(
               'You can start your journey',
-              style: TextStyle(fontSize: 25, color: Colors.white),
+              style: TextStyle(
+                fontSize: 25,
+                color: Colors.white,
+                fontFamily: ' LilitaOne',
+              ),
             ),
             Text(
               'by scanning an image:',
-              style: TextStyle(fontSize: 25, color: Colors.white),
+              style: TextStyle(
+                fontSize: 25,
+                color: Colors.white,
+                fontFamily: ' LilitaOne',
+              ),
             ),
             SizedBox(
               height: 150,

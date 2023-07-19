@@ -12,10 +12,12 @@ class _CameraState extends State<Camera> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(
           'Animate On',
           style: TextStyle(
             fontSize: 25,
+            fontFamily: ' LilitaOne',
           ),
         ),
         centerTitle: true,
