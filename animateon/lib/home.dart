@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
           'Animate On',
           style: TextStyle(
             fontSize: 25,
-            fontFamily: ' LilitaOne',
+            fontFamily: 'LilitaOne',
           ),
         ),
         centerTitle: true,
@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
               style: TextStyle(
                 fontSize: 25,
                 color: Colors.white,
-                fontFamily: ' LilitaOne',
+                fontFamily: 'LilitaOne',
               ),
             ),
             Text(
@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
               style: TextStyle(
                 fontSize: 25,
                 color: Colors.white,
-                fontFamily: ' LilitaOne',
+                fontFamily: 'LilitaOne',
               ),
             ),
             SizedBox(
