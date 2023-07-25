@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "513854974248",
+    "project_id": "animateon-ccecc",
+    "storage_bucket": "animateon-ccecc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513854974248:android:9315c509d6783df73a481d",
+        "android_client_info": {
+          "package_name": "com.example.animateon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513854974248-1s1r9evdomvssvfnhrcrh8derub1343t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA360cUAA5q-lLROT0On0JyjnIEqNAWjgI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513854974248-1s1r9evdomvssvfnhrcrh8derub1343t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "513854974248-1bb6tmipdlq87pqkmidcvv4c4ft47eqm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.animateon"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
