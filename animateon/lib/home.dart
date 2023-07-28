@@ -1,6 +1,8 @@
-import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'screenTitle.dart';
+import 'images.dart';
 
 
 class Home extends StatefulWidget {
@@ -12,69 +14,50 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  var _image;
-  final imagePicker = ImagePicker();
-
-  Future getImage() async{
-   final image = await imagePicker.pickImage(
-      source: ImageSource.camera
-    );
-    if (image == null) return;
-    setState(() {
-     _image = File(image.path);
-    });
-  }
   
+
   @override
   Widget build(BuildContext context) {
+
+    double height =  MediaQuery.of(context).size.height;
+
       return Scaffold(
-      backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text(
-          'Animate On',
-          style: TextStyle(
-            fontSize: 25,
-            fontFamily: 'LilitaOne',
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.amber[300],
-      ),
-      body: Center(
-        child: Column(
+      backgroundColor: Colors.white,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const SizedBox(
-              height: 150,
+            const ScreenTitle(),
+            SizedBox(
+              height: height *0.04,
             ),
             const Text(
-              'You can start your journey',
+              'You can start your journey\n     by scanning an image:',
               style: TextStyle(
-                fontSize: 25,
-                color: Colors.white,
+                fontSize: 20,
+                color: Colors.black,
                 fontFamily: 'LilitaOne',
               ),
             ),
-            const Text(
-              'by scanning an image:',
-              style: TextStyle(
-                fontSize: 25,
-                color: Colors.white,
-                fontFamily: 'LilitaOne',
-              ),
+            SizedBox(
+              height: height *0.1,
             ),
-            const SizedBox(
-              height: 150,
+           
+            Align(
+              alignment: Alignment.center,
+              child: FloatingActionButton(
+                  onPressed: (){ Navigator.pushNamed(context, '/camera');},
+                  backgroundColor: Colors.orange[800],
+                  child: const Icon(Icons.camera_alt, color: Colors.black, size: 30),
+              ).animate()
+                  .scaleXY(duration: const Duration(seconds: 3), end: 1.15, curve: Curves.easeOutBack)
+                  .moveY(duration: const Duration(seconds: 3), end: -10)
+                  .elevation(duration: const Duration(seconds: 3), end: 24),
             ),
-            FloatingActionButton.large(
-              onPressed: getImage,
-              backgroundColor: Colors.amber[300],
-              child: Icon(Icons.camera_alt, color: Colors.grey[900], size: 55),
-            ),
+           const Images2(),
           ],
         ),
-      ),
-    );
+      );
   }
 }
 
