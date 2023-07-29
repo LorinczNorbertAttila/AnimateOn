@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'camera_screen.dart';
 import 'home.dart';
+import 'matching_picture.dart';
 
 void main() async{
   runApp(MaterialApp(
     initialRoute: '/home',
     routes: {
       '/home': (context) => const Home(),
+      '/match' : (context) => const Matching(),
     },
      onGenerateRoute: (settings) {
     switch (settings.name) {

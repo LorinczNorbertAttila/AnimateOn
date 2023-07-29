@@ -7,15 +7,17 @@ import 'package:image_picker/image_picker.dart';
 import 'images.dart';
 
 
-var _image;
-final imagePicker = ImagePicker();
-
+  
 Future getImage() async{
+  var image1;
+  final imagePicker = ImagePicker();
+
   final image = await imagePicker.pickImage(
     source: ImageSource.camera
   );
-  if (image == null) return;
-  _image = File(image.path);
+  if (image == null) return null;
+  image1 = File(image.path);
+  return image1;
 }
 
 class CameraScreen extends StatefulWidget {
@@ -87,12 +89,14 @@ class _CameraAppState extends State<CameraScreen> {
   }
 }
 
-void listStorage() async {
+
+Future<Images?> listStorage(var image) async {
+  var _image = image;
   final storageRef = FirebaseStorage.instance.ref().child("samples/");
   final listResult = await storageRef.listAll();
   String imageUrl = '';
-  var a = Uri.parse('https://media.npr.org/assets/img/2012/02/02/mona-lisa_custom-31a0453b88a2ebcb12c652bce5a1e9c35730a132.jpg');
-  var b, result;
+  var a = _image;
+  var b, result, url;
   List<Images> images = [];
   for (var items in listResult.items) {
     try{
@@ -101,8 +105,9 @@ void listStorage() async {
         print("Error");
       }
       b = Uri.parse(imageUrl);
-      result = await compareImages(src1: a, src2: b, algorithm: PerceptualHash());
-      images.add(Images(items.fullPath, result));
+      result = await compareImages(src1: a, src2: b, algorithm: EuclideanColorDistance());
+      url = await items.getDownloadURL();
+      images.add(Images(items.name, result, url));
   }
   double min = 10;
   for (var items in images){
@@ -112,8 +117,9 @@ void listStorage() async {
   }
   for (var items in images){
     if(items.match == min){
-      var name = items.name;
-     print('\x1B[31m $name \x1B[0m');
+      return items;
     }
   }
+  return null;
+
 }

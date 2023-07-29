@@ -1,5 +1,4 @@
 
-import 'package:animateon/camera_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'screenTitle.dart';
@@ -47,7 +46,7 @@ class _HomeState extends State<Home> {
             Align(
               alignment: Alignment.center,
               child: FloatingActionButton(
-                  onPressed: listStorage, //(){ Navigator.pushNamed(context, '/camera');},
+                  onPressed: (){ Navigator.pushNamed(context, '/match');},
                   backgroundColor: Colors.orange[800],
                   child: const Icon(Icons.camera_alt, color: Colors.black, size: 30),
               ).animate()
