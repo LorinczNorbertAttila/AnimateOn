@@ -1,8 +1,9 @@
 
+import 'package:animateon/camera_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'screenTitle.dart';
-import 'images.dart';
+import 'home_images.dart';
 
 
 class Home extends StatefulWidget {
@@ -46,7 +47,7 @@ class _HomeState extends State<Home> {
             Align(
               alignment: Alignment.center,
               child: FloatingActionButton(
-                  onPressed: (){ Navigator.pushNamed(context, '/camera');},
+                  onPressed: listStorage, //(){ Navigator.pushNamed(context, '/camera');},
                   backgroundColor: Colors.orange[800],
                   child: const Icon(Icons.camera_alt, color: Colors.black, size: 30),
               ).animate()
@@ -54,7 +55,7 @@ class _HomeState extends State<Home> {
                   .moveY(duration: const Duration(seconds: 3), end: -10)
                   .elevation(duration: const Duration(seconds: 3), end: 24),
             ),
-           const Images2(),
+           const HomeImages2(),
           ],
         ),
       );

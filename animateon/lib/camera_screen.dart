@@ -2,7 +2,9 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_compare/image_compare.dart';
 import 'package:image_picker/image_picker.dart';
+import 'images.dart';
 
 
 var _image;
@@ -88,7 +90,30 @@ class _CameraAppState extends State<CameraScreen> {
 void listStorage() async {
   final storageRef = FirebaseStorage.instance.ref().child("samples/");
   final listResult = await storageRef.listAll();
+  String imageUrl = '';
+  var a = Uri.parse('https://media.npr.org/assets/img/2012/02/02/mona-lisa_custom-31a0453b88a2ebcb12c652bce5a1e9c35730a132.jpg');
+  var b, result;
+  List<Images> images = [];
   for (var items in listResult.items) {
-    print(items.fullPath);
+    try{
+        imageUrl = await items.getDownloadURL();
+      }catch(onError){
+        print("Error");
+      }
+      b = Uri.parse(imageUrl);
+      result = await compareImages(src1: a, src2: b, algorithm: PerceptualHash());
+      images.add(Images(items.fullPath, result));
+  }
+  double min = 10;
+  for (var items in images){
+    if(items.match < min){
+      min = items.match;
+    }
+  }
+  for (var items in images){
+    if(items.match == min){
+      var name = items.name;
+     print('\x1B[31m $name \x1B[0m');
+    }
   }
 }

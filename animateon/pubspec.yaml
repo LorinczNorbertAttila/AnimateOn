@@ -41,6 +41,8 @@ dependencies:
   image_picker: ^1.0.1
   flutter_animate: ^4.2.0+1
   page_transition: ^2.0.9
+  image: ^3.0.0
+  python_ffi: ^0.3.1
 
 dev_dependencies:
   flutter_test:
